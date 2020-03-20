@@ -10,7 +10,7 @@ import Foundation
 import FirebaseFirestore
 import FirebaseStorage
 
-class Storage {
+class myStorage {
     
     private static var list = [Note]()
     private static let db = Firestore.firestore()
