@@ -8,12 +8,14 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseStorage
 
 class Storage {
     
     private static var list = [Note]()
     private static let db = Firestore.firestore()
     private static let notes = "notes"
+    private static let storage = Storage.storage()
 
     static func startListener(){
         print("starting listener")
@@ -28,6 +30,14 @@ class Storage {
                     self.list.append(newNote)
                 }
             }
+        }
+    }
+
+    
+    static func downloadImage(name:String){
+        let imgRef = storage.reference(withPath: name) // get filehandle
+        imgRef.getData(maxSize: 400000) {(data, error) in
+            print("succes downloading image")
         }
     }
     
